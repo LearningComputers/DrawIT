@@ -21,8 +21,13 @@ rd=pygame.transform.scale(pygame.image.load("Redo.png"),(50,50))
 rdrec=rd.get_rect()
 crs=pygame.image.load("PEN.png")
 crsrec=crs.get_rect()
+
+pixlpos =[]
+
+
 def game():
     pygame.mouse.set_visible(False)
+    y=0
     while True:
         crsrec.bottomleft=pygame.mouse.get_pos()
         rdrec.topleft=(sw-rdrec[2],0)
@@ -53,12 +58,18 @@ def game():
                     if 4<=imgn<=5:
                         print (500)
                     print (imgn)
-                if pygame.mouse.get_pos()[0]>rdrec[0]-rdrec[2] and pygame.mouse.get_pos()[1]>rdrec[1]-rdrec[3]:
-                    print ("worked")
-                    s.blit(cn, (cnrec[0]+offset1,cnrec[1]+offset2))
+                if pygame.mouse.get_pos()[0]>rdrec[0]-rdrec[2] and pygame.mouse.get_pos()[1]<rdrec[3]-rdrec[1]:
+                    x=0
+                    while x<5 and len(pixlpos)>5:
+                        pygame.draw.rect(cn,(255,255,255),((pixlpos[y])))
+                        x+=1
+                        y+=1
             if pygame.mouse.get_pressed()[0]:
                 try:
                     pygame.draw.rect(cn,(0,0,0),((pygame.mouse.get_pos()[0]-offset1,pygame.mouse.get_pos()[1]-offset2),(4,4)))
+                    print (pygame.mouse.get_pos())
+                    if 600<pygame.mouse.get_pos()[0]<850 and 300<pygame.mouse.get_pos()[1]<600:
+                        pixlpos.insert((0),((pygame.mouse.get_pos()[0]-offset1,pygame.mouse.get_pos()[1]-offset2),(4,4)))
                 except AttributeError:
                     pass
 game()
