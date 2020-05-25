@@ -45,7 +45,7 @@ def game():
             s.blit(crs,crsrec)
             bg.blit (rd, rdrec)
             bg.blit (rdpls, rdplsrec)
-            pygame.display.update(s)
+            pygame.display.update()
         ref()
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
