@@ -1,4 +1,4 @@
 # DrawIT
-You need to draw faces
+You need to draw faces.
 
-Life about Portrait artist who makes accurate art.
+Life about Portrait artist who makes accurate art. Broken.
